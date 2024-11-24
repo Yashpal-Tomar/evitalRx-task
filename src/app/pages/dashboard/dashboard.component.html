@@ -1,0 +1,50 @@
+<div class="dashboard-container">
+  <mat-card class="search-card">
+    <form [formGroup]="searchForm" class="search-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>🔍 Search for Medicines</mat-label>
+        <input matInput formControlName="query" placeholder="Enter medicine name" />
+      </mat-form-field>
+    </form>
+  </mat-card>
+
+  <div *ngIf="loading" class="loading-container">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div class="medicine-card-container">
+    <mat-card *ngFor="let medicine of medicines" class="medicine-card">
+      <!-- Card Header -->
+      <div
+        class="medicine-card-header"
+        [ngClass]="{ 'available': medicine.available_for_patient === 'yes', 'unavailable': medicine.available_for_patient !== 'yes' }"
+      >
+        {{ medicine.medicine_name }}
+      </div>
+
+      <!-- Card Content -->
+      <mat-card-content>
+        <p><strong>Content:</strong> {{ medicine.content }}</p>
+        <p><strong>Price:</strong> ₹{{ medicine.price }}</p>
+        <p><strong>MRP:</strong> ₹{{ medicine.mrp }}</p>
+        <p><strong>Packing:</strong> {{ medicine.packing_size }}</p>
+        <p><strong>Manufacturer:</strong> {{ medicine.manufacturer_name }}</p>
+      </mat-card-content>
+
+      <!-- Card Footer -->
+      <div class="medicine-card-footer">
+        <button mat-raised-button color="primary" class="full-width" (click)="addToCart(medicine)">
+          Add to Cart
+        </button>
+      </div>
+    </mat-card>
+  </div>
+
+  <div *ngIf="!loading && medicines.length === 0 && !errorMessage">
+    <p class="no-results-message">No medicines found. Try another search.</p>
+  </div>
+</div>

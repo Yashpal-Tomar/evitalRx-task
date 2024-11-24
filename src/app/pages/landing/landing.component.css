@@ -1,0 +1,88 @@
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0d3b66;
+  color: white;
+  padding: 0.5rem 2rem;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px;
+  margin-right: 2rem;
+}
+
+header nav {
+  display: flex;
+}
+
+header nav a {
+  margin-left: 1rem;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+header nav a.active {
+  text-decoration: underline;
+}
+
+header nav a:hover {
+  color: #ffcb05;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.cart-button {
+  position: relative;
+  color: white;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: #ff3d00;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  flex: 1;
+  padding: 2rem;
+  background-color: #f5f5f5;
+  overflow-y: auto;
+}
+
+/* Footer */
+footer {
+  background-color: #0d3b66;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 14px;
+}

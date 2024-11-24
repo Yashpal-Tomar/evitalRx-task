@@ -1,0 +1,98 @@
+/* Main container */
+.login-container {
+    display: flex;
+    height: 95vh;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Left Pane */
+  .left-pane {
+    flex: 1;
+    background-color: #0d3b66;
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+  }
+
+  .text-logo{
+   display: flex;
+   margin-left: 20px;
+   margin-top: 20px;
+  }
+  
+  .left-pane .logo {
+    width: 150px;
+  }
+  
+  /* Right Pane */
+  .right-pane {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f5f5f5;
+  }
+  
+  mat-card {
+    max-width: 400px;
+    margin: auto;
+    padding: 1.5rem;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title */
+  .login-title {
+    color: #0d3b66;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  
+  /* Full-width form fields */
+  .full-width {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .icon{
+    color: rgba(17, 17, 17, 0.6);
+  }
+  
+  /* Forgot password link */
+  /* .forgot-password {
+    display: block;
+    text-align: center;
+    margin: 1rem 0;
+    color: #0d3b66;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .forgot-password:hover {
+    text-decoration: underline;
+  } */
+  
+  /* Join Chemist Section */
+  /* .join-chemist {
+    background-color: #e8f4ff;
+    text-align: center;
+    margin-top: 1.5rem;
+    padding: 1rem;
+  }
+  
+  .join-chemist p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .join-chemist .join-link {
+    color: #0d3b66;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .join-chemist .join-link:hover {
+    text-decoration: underline;
+  }
+   */

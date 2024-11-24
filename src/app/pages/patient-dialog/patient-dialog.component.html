@@ -1,0 +1,93 @@
+
+
+<div *ngIf="!showPatientForm" class="search-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Search Patient by ID</mat-label>
+    <input matInput placeholder="Enter Patient ID" [(ngModel)]="enteredId"/>
+  </mat-form-field>
+  <button mat-raised-button color="primary" class="custom-btn-search" (click)="searchPatient()">Search</button>
+</div>
+<div><button mat-raised-button class="custom-btn-add" color="primary" (click)="showPatientForm=true">Add New</button></div>
+
+<div *ngIf="selectedPatient" class="patient-card">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Patient Details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>First Name:</strong> {{ selectedPatient?.firstname }}</p>
+      <p><strong>Last Name:</strong> {{ selectedPatient?.lastname }}</p>
+      <p><strong>Mobile:</strong> {{ selectedPatient?.mobile }}</p>
+      <p><strong>Zip Code:</strong> {{ selectedPatient?.zipcode }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="selectPatient(selectedPatient)">Select</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<!-- Add New Patient Form if no search result -->
+<div *ngIf="showPatientForm" class="new-patient-form">
+  <h2>Add New Patient</h2>
+  <form [formGroup]="addPatientForm" (ngSubmit)="submitPatient()">
+    
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="half-width">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="first_name" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="half-width">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="last_name" />
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Date of Birth</mat-label>
+      <input matInput [matDatepicker]="dobPicker" formControlName="dob" />
+      <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+      <mat-datepicker #dobPicker></mat-datepicker>
+    </mat-form-field>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="half-width">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="female">Female</mat-option>
+          <mat-option value="other">Other</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="half-width">
+        <mat-label>Blood Group</mat-label>
+        <mat-select formControlName="blood_group">
+          <mat-option value="A+">A+</mat-option>
+          <mat-option value="A-">A-</mat-option>
+          <mat-option value="B+">B+</mat-option>
+          <mat-option value="B-">B-</mat-option>
+          <mat-option value="O+">O+</mat-option>
+          <mat-option value="O-">O-</mat-option>
+          <mat-option value="AB+">AB+</mat-option>
+          <mat-option value="AB-">AB-</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="half-width">
+        <mat-label>Mobile</mat-label>
+        <input matInput formControlName="mobile" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="half-width">
+        <mat-label>Zip Code</mat-label>
+        <input matInput formControlName="zipcode" />
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit" class="submit-btn">Add and Select Patient</button>
+  </form>
+</div>
+

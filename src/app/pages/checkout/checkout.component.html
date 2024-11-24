@@ -1,0 +1,20 @@
+<div class="checkout-container">
+  <h1>Checkout</h1>
+  
+  <div *ngIf="medicines.length > 0; else emptyCart">
+    <div class="medicine-card" *ngFor="let medicine of medicines">
+      <h2>{{ medicine.medicine_name }}</h2>
+      <p><strong>Content:</strong> {{ medicine.content }}</p>
+      <p><strong>Price:</strong> ₹{{ medicine.price }}</p>
+      <p><strong>MRP:</strong> ₹{{ medicine.mrp }}</p>
+      <p><strong>Packing:</strong> {{ medicine.packing_size }}</p>
+      <p><strong>Manufacturer:</strong> {{ medicine.manufacturer_name }}</p>
+    </div>
+    <button *ngIf="!patientDetails" mat-raised-button color="primary" (click)="selectPatient()">Select Patient</button>
+    <button *ngIf="patientDetails" mat-raised-button color="primary" (click)="placeOrder()">Place Order</button>
+  </div>
+
+  <ng-template #emptyCart>
+    <p>Your cart is empty.</p>
+  </ng-template>
+</div>

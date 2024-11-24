@@ -1,0 +1,100 @@
+.dashboard-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-card {
+  margin-bottom: 16px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.full-width {
+  width: 100%;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.error-message {
+  color: #ff4d4d;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.medicine-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.medicine-card {
+  width: 320px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.medicine-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Header Styling */
+.medicine-card-header {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  padding: 12px 8px;
+}
+
+.medicine-card-header.available {
+  background-color: #4caf50; /* Green for available */
+}
+
+.medicine-card-header.unavailable {
+  background-color: #f44336; /* Red for unavailable */
+}
+
+/* Footer Styling */
+.medicine-card-footer {
+  margin-top: auto;
+  padding: 8px 0;
+  background-color: #f9f9f9;
+  border-top: 1px solid #ddd;
+}
+
+.medicine-card-footer button {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Card Content */
+.mat-card-content p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.no-results-message {
+  color: #555;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 20px;
+}

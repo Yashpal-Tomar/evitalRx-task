@@ -1,0 +1,39 @@
+<div class="landing-container">
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="../../../assets/image/evitalrx-logo.png" alt="Logo" />
+      </div>
+
+      <!-- Navigation Links -->
+      <nav>
+        <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+        <a routerLink="/checkout" routerLinkActive="active">Checkout</a>
+      </nav>
+    </div>
+
+    <!-- Cart Icon with Badge -->
+    <div class="header-right">
+      <button mat-icon-button class="cart-button" routerLink="/checkout">
+        <mat-icon>shopping_cart</mat-icon>
+        <span class="cart-badge">{{ cartCount }}</span>
+      </button>
+      <mat-icon [matMenuTriggerFor]="menu">menu</mat-icon>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 eVital RX. All rights reserved.</p>
+  </footer>
+</div>
