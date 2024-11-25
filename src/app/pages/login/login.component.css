@@ -9,9 +9,6 @@
   .left-pane {
     flex: 1;
     background-color: #0d3b66;
-    /* display: flex; */
-    /* justify-content: center;
-    align-items: center; */
   }
 
   .text-logo{
@@ -49,7 +46,6 @@
     margin-bottom: 1rem;
   }
   
-  /* Full-width form fields */
   .full-width {
     width: 100%;
     margin-bottom: 1rem;
@@ -59,40 +55,4 @@
     color: rgba(17, 17, 17, 0.6);
   }
   
-  /* Forgot password link */
-  /* .forgot-password {
-    display: block;
-    text-align: center;
-    margin: 1rem 0;
-    color: #0d3b66;
-    text-decoration: none;
-    font-size: 14px;
-  }
   
-  .forgot-password:hover {
-    text-decoration: underline;
-  } */
-  
-  /* Join Chemist Section */
-  /* .join-chemist {
-    background-color: #e8f4ff;
-    text-align: center;
-    margin-top: 1.5rem;
-    padding: 1rem;
-  }
-  
-  .join-chemist p {
-    margin: 0;
-    font-size: 14px;
-  }
-  
-  .join-chemist .join-link {
-    color: #0d3b66;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  
-  .join-chemist .join-link:hover {
-    text-decoration: underline;
-  }
-   */
