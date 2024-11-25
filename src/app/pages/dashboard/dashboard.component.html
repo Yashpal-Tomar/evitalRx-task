@@ -3,7 +3,11 @@
     <form [formGroup]="searchForm" class="search-form">
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>🔍 Search for Medicines</mat-label>
-        <input matInput formControlName="query" placeholder="Enter medicine name" />
+        <input
+          matInput
+          formControlName="query"
+          placeholder="Enter medicine name"
+        />
       </mat-form-field>
     </form>
   </mat-card>
@@ -21,7 +25,10 @@
       <!-- Card Header -->
       <div
         class="medicine-card-header"
-        [ngClass]="{ 'available': medicine.available_for_patient === 'yes', 'unavailable': medicine.available_for_patient !== 'yes' }"
+        [ngClass]="{
+          available: medicine.available_for_patient === 'yes',
+          unavailable: medicine.available_for_patient !== 'yes'
+        }"
       >
         {{ medicine.medicine_name }}
       </div>
@@ -37,7 +44,13 @@
 
       <!-- Card Footer -->
       <div class="medicine-card-footer">
-        <button mat-raised-button color="primary" class="full-width" (click)="addToCart(medicine)">
+        <button
+          [disabled]="medicine.available_for_patient !== 'yes'"
+          mat-raised-button
+          color="primary"
+          class="full-width"
+          (click)="addToCart(medicine)"
+        >
           Add to Cart
         </button>
       </div>

@@ -1,13 +1,27 @@
-
-
 <div *ngIf="!showPatientForm" class="search-container">
   <mat-form-field appearance="fill">
     <mat-label>Search Patient by ID</mat-label>
-    <input matInput placeholder="Enter Patient ID" [(ngModel)]="enteredId"/>
+    <input matInput placeholder="Enter Patient ID" [(ngModel)]="enteredId" />
   </mat-form-field>
-  <button mat-raised-button color="primary" class="custom-btn-search" (click)="searchPatient()">Search</button>
+  <button
+    mat-raised-button
+    color="primary"
+    class="custom-btn-search"
+    (click)="searchPatient()"
+  >
+    Search
+  </button>
 </div>
-<div><button mat-raised-button class="custom-btn-add" color="primary" (click)="showPatientForm=true">Add New</button></div>
+<div>
+  <button
+    mat-raised-button
+    class="custom-btn-add"
+    color="primary"
+    (click)="showPatientForm = true"
+  >
+    Add New
+  </button>
+</div>
 
 <div *ngIf="selectedPatient" class="patient-card">
   <mat-card>
@@ -21,7 +35,13 @@
       <p><strong>Zip Code:</strong> {{ selectedPatient?.zipcode }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="selectPatient(selectedPatient)">Select</button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="selectPatient(selectedPatient)"
+      >
+        Select
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>
@@ -30,7 +50,6 @@
 <div *ngIf="showPatientForm" class="new-patient-form">
   <h2>Add New Patient</h2>
   <form [formGroup]="addPatientForm" (ngSubmit)="submitPatient()">
-    
     <div class="form-row">
       <mat-form-field appearance="fill" class="half-width">
         <mat-label>First Name</mat-label>
@@ -46,7 +65,10 @@
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Date of Birth</mat-label>
       <input matInput [matDatepicker]="dobPicker" formControlName="dob" />
-      <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="dobPicker"
+      ></mat-datepicker-toggle>
       <mat-datepicker #dobPicker></mat-datepicker>
     </mat-form-field>
 
@@ -87,7 +109,8 @@
       </mat-form-field>
     </div>
 
-    <button mat-raised-button color="primary" type="submit" class="submit-btn">Add and Select Patient</button>
+    <button mat-raised-button color="primary" type="submit" class="submit-btn">
+      Add and Select Patient
+    </button>
   </form>
 </div>
-
