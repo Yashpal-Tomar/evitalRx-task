@@ -14,8 +14,6 @@ export class CartService {
    */
   addToCart(item: any): void {
     const cart = this.getCart();
-    cart.push(item);
-    localStorage.setItem('cart', JSON.stringify(cart));
     this.cartSubject.next(cart.length); // Update the cart count
   }
 

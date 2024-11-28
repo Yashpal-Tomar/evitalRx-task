@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-patient-dialog',
   templateUrl: './patient-dialog.component.html',
-  styleUrls: ['./patient-dialog.component.css']
+  styleUrls: ['./patient-dialog.component.css'],
 })
 export class PatientDialogComponent {
   addPatientForm: FormGroup;
@@ -16,8 +16,13 @@ export class PatientDialogComponent {
   showPatientForm: boolean = false;
   enteredId: any;
   selectedPatient: any;
+  today: string = new Date().toISOString().split('T')[0];
 
-  constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<PatientDialogComponent>, private apiService: ApiService) {
+  constructor(
+    private fb: FormBuilder,
+    private dialogRef: MatDialogRef<PatientDialogComponent>,
+    private apiService: ApiService
+  ) {
     this.addPatientForm = this.fb.group({
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
@@ -30,14 +35,16 @@ export class PatientDialogComponent {
   }
 
   searchPatient(): void {
-    this.apiService.post(environment.FETCH_PATIENT, {patient_id: this.enteredId}).subscribe({
-      next: (response) => {
-        this.selectedPatient = response.data[0]
-      },
-      error: () => {
-        alert('Error fetching patient. Please try again.');
-      }
-    });
+    this.apiService
+      .post(environment.FETCH_PATIENT, { patient_id: this.enteredId })
+      .subscribe({
+        next: (response) => {
+          this.selectedPatient = response.data[0];
+        },
+        error: () => {
+          alert('Error fetching patient. Please try again.');
+        },
+      });
   }
 
   selectPatient(patient: any): void {

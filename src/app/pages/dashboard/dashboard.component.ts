@@ -16,7 +16,11 @@ export class DashboardComponent implements OnInit {
   loading = false;
   errorMessage: string | null = null;
 
-  constructor(private apiService: ApiService, private fb: FormBuilder, private cartService: CartService) {
+  constructor(
+    private apiService: ApiService,
+    private fb: FormBuilder,
+    private cartService: CartService
+  ) {
     this.searchForm = this.fb.group({
       query: [''],
     });
@@ -60,8 +64,24 @@ export class DashboardComponent implements OnInit {
   }
 
   addToCart(medicine: any) {
-    medicine.quantity = 1;
-    this.cartService.addToCart(medicine);
-    alert(`${medicine.medicine_name} added to cart!`);
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+    const existingItemIndex = cart.findIndex(
+      (item: any) => item.medicine_id === medicine.medicine_id
+    );
+
+    if (existingItemIndex > -1) {
+      cart[existingItemIndex].quantity += 1;
+      alert(
+        `Quantity of ${cart[existingItemIndex].medicine_name} updated to ${cart[existingItemIndex].quantity}!`
+      );
+    } else {
+      medicine.quantity = 1;
+      cart.push(medicine);
+      alert(`${medicine.medicine_name} added to cart!`);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    this.cartService.addToCart(cart);
   }
 }
