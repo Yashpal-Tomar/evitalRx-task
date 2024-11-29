@@ -4,23 +4,31 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirect root to Dashboard
-  { 
-    path: '', 
-    component: LandingComponent, 
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  {
+    path: '',
+    component: LandingComponent,
     children: [
-      { path: 'dashboard', component: DashboardComponent }, // Child route
-      { path: 'checkout', component: CheckoutComponent },   // Child route
-    ] 
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'checkout',
+        component: CheckoutComponent,
+        canActivate: [AuthGuard],
+      },
+    ],
   },
   { path: 'login', component: LoginComponent },
 ];
 
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

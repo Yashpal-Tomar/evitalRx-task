@@ -33,7 +33,6 @@ export class CheckoutComponent implements OnInit {
     this.medicines = cart ? JSON.parse(cart) : [];
   }
 
-  // Place order logic
   selectPatient(): void {
     const dialogRef = this.dialog.open(PatientDialogComponent, {
       width: '700px',
@@ -41,22 +40,34 @@ export class CheckoutComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((selectedPatient) => {
-      this.patientDetails = selectedPatient;
       if (selectedPatient) {
         this.apiService
           .post(environment.ADD_PATIENT, selectedPatient)
           .subscribe({
             next: (response) => {
-              this.patientId = response.data.patient_id;
-              if (this.patientId) alert('Patient added successfully!');
+              if (response.status_code === 1) {
+                alert('Patient added successfully!');
+                this.patientDetails = selectedPatient;
+                this.patientId = response.data?.patient_id;
+                dialogRef.close();
+              } else {
+                alert(
+                  response.status_message +
+                    ' Failed to add patient. Please try again.'
+                );
+              }
             },
-            error: () => {
-              alert('Error adding patient. Please try again.');
+            error: (error) => {
+              console.error('Error adding patient:', error);
+              alert('Error adding patient. Please try again later.');
             },
           });
+      } else {
+        alert('No patient selected.');
       }
     });
   }
+
   placeOrder() {
     const filteredMedicines = this.medicines.map(
       ({ medicine_id, quantity }) => ({ medicine_id, quantity })

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
@@ -8,7 +8,7 @@ import { CommonService } from 'src/app/services/common.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   hidePassword = true;
 
@@ -28,6 +28,13 @@ export class LoginComponent {
       ],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
+  }
+
+  ngOnInit() {
+    const isLoggedIn = !!this.commonService.getLocalStorageValue('user');
+    if (isLoggedIn) {
+      this.router.navigate(['/dashboard']);
+    }
   }
 
   onSubmit() {
