@@ -10,7 +10,7 @@
   <div class="right-pane">
     <mat-card>
       <h1 class="login-title">Login</h1>
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="loginForm">
         <!-- Mobile Number Field -->
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Mobile Number</mat-label>
@@ -63,7 +63,7 @@
           mat-raised-button
           color="primary"
           class="full-width"
-          type="submit"
+          (click)="onSubmit()"
         >
           Login
         </button>
